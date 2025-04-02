@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -49,44 +50,25 @@
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Lakers colors */
+    --lakers-purple: 271 81% 25%;
+    --lakers-gold: 45 100% 50%;
+    
+    /* Cavaliers colors */
+    --cavs-wine: 0 73% 31%;
+    --cavs-gold: 41 100% 47%;
+    
+    /* Heat colors */
+    --heat-red: 0 100% 50%;
+    --heat-black: 0 0% 0%;
   }
 
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* ... keep existing code (dark theme variables) */
   }
 }
 
@@ -97,5 +79,67 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+  
+  /* Timeline styles */
+  .timeline-container {
+    @apply relative;
+  }
+
+  .timeline-container::after {
+    content: '';
+    @apply absolute top-0 bottom-0 w-1 bg-gradient-to-b from-[#552583] via-[#FDB927] to-[#6F263D] left-1/2 transform -translate-x-1/2;
+  }
+
+  .timeline-item {
+    @apply relative pl-8 pr-8 pb-10 w-full flex;
+  }
+
+  .timeline-item:nth-child(odd) {
+    @apply justify-end;
+  }
+
+  .timeline-content {
+    @apply bg-white p-6 rounded-lg shadow-lg w-full max-w-md relative z-10 transform transition-transform duration-300 hover:scale-105;
+  }
+
+  .timeline-item:nth-child(odd) .timeline-content::after {
+    content: '';
+    @apply absolute top-6 -right-3 w-6 h-6 bg-white transform rotate-45;
+  }
+
+  .timeline-item:nth-child(even) .timeline-content::after {
+    content: '';
+    @apply absolute top-6 -left-3 w-6 h-6 bg-white transform rotate-45;
+  }
+
+  .timeline-dot {
+    @apply absolute w-5 h-5 rounded-full bg-[#FDB927] border-4 border-white z-20 left-1/2 transform -translate-x-1/2;
+  }
+  
+  /* Team color gradients */
+  .lakers-gradient {
+    @apply bg-gradient-to-r from-[#552583] to-[#FDB927];
+  }
+  
+  .cavs-gradient {
+    @apply bg-gradient-to-r from-[#6F263D] to-[#FDBB30];
+  }
+  
+  .heat-gradient {
+    @apply bg-gradient-to-r from-[#98002E] to-[#F9A01B];
+  }
+  
+  /* Custom scrollbar for webkit browsers */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-200;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gradient-to-b from-[#552583] via-[#FDB927] to-[#6F263D] rounded-full;
   }
 }
